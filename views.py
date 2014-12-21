@@ -88,12 +88,12 @@ def new_task():
 
 
 #Mark task as complete
-@app.route('/complete/<int:task_id',)
+@app.route('/complete/<int:task_id>',)
 @login_required
 def complete(task_id):
     g.db = connect_db()
     g.db.execute(
-        'update tasks set status = where task_id = '+str(task_id)
+        'update tasks set status = 0 where task_id ='+str(task_id)
     )
     g.db.commit()
     g.db.close()
@@ -102,7 +102,7 @@ def complete(task_id):
 
 
 #Delete tasks
-@app.route('/delete/<int:task_id',)
+@app.route('/delete/<int:task_id>',)
 @login_required
 def delete_entry(task_id):
     g.db = connect_db()
@@ -112,3 +112,6 @@ def delete_entry(task_id):
     flash('The task was deleted permanently.')
     return redirect(url_for('tasks'))
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404

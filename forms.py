@@ -1,5 +1,6 @@
 __author__ = 'M1g4'
 
+from flask import Flask
 from flask_wtf import Form
 from wtforms import StringField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired
