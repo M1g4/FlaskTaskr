@@ -8,7 +8,7 @@ from wtforms.validators import DataRequired
 class AddTaskForm(Form):
     task_id = IntegerField('Priority')
     name = StringField('Task Name', validators=[DataRequired()])
-    due_date = DataField(
+    due_date = DateField(
         'Date Due (mm/dd/yyyy)', validators=[DataRequired()], format='%m/%d/%Y'
     )
     priority = SelectField(

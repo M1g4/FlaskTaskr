@@ -3,6 +3,7 @@ __author__ = 'M1g4'
 from flask  import Flask, flash, redirect, render_template, request, session, url_for, g
 from functools import wraps
 import sqlite3
+from forms import AddTaskForm
 
 app = Flask(__name__)
 
@@ -60,7 +61,7 @@ def tasks():
     g.db.close()
     return render_template(
         'tasks.html',
-        form=AddTaskForm(request,form),
+        form=AddTaskForm(request.form),
         open_tasks=open_tasks,
         closed_tasks=closed_tasks
     )
